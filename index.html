@@ -11,7 +11,10 @@
 			<div v-for="row in 10">
 				<div v-for="column in 10" class="cell"><span v-if="(row-1)===position[0] && (column-1)===position[1]">X</span></div>
 			</div>			
-		</div>			
+		</div>	
+		<div class="control-panel">
+			Current position: {{position}}; Current direction: {{direction}}
+		</div>		
 	</div>	
 </body>
 <script type="text/javascript">	
