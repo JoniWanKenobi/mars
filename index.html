@@ -1,9 +1,66 @@
 <html>
 <head>
 	<title>Mars Rover Kata!</title>
+	<link rel="stylesheet" type="text/css" href="rover.css">
 	<script type="text/javascript" src="rover.js"></script>
+	<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
 </head>
 <body>
-
+	<div id="app">
+		<div class="grid">
+			<div v-for="row in 10">
+				<div v-for="column in 10" class="cell"><span v-if="(row-1)===position[0] && (column-1)===position[1]">X</span></div>
+			</div>			
+		</div>			
+	</div>	
 </body>
+<script type="text/javascript">	
+	var VM = new Vue({
+    el: "#app",
+    data:{
+      position: [1,0],
+      direction: "S",
+    },
+    created: function () {
+            window.addEventListener('keyup', this.getUserInput)
+    },
+    methods:{
+    	getUserInput: function(e){
+    		if (e.which===83||e.which===78||e.which===69||e.which===87) {
+    			var newDirection=String.fromCharCode(e.which);
+    			this.direction=newDirection;
+    			this.goForward(this.direction);
+    		}
+    	},    	
+    	goForward: function(dir){
+    		switch(dir) {
+			    case 'S':
+			    	if (this.position[0]<10) {
+			    		this.position.splice(0,1,this.position[0]+1);
+			    	}			      
+			      break;
+			    case 'E':
+			    	if (this.position[1]<10) {
+			    		this.position.splice(1,1,this.position[1]+1);
+			    	}			      
+			      break;
+			    case 'N':
+			    	if (this.position[0]>0) {
+			    		this.position.splice(0,1,this.position[0]-1);
+			    	}			      
+			      break;
+			    case 'W':
+			    	if (this.position[1]>0) {
+			    		this.position.splice(1,1,this.position[1]-1);
+			    	}			      
+			      break;
+
+    		}
+
+    	}
+    }
+  })
+
+</script>
+
 </html>

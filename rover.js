@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var myRover = {
   position: [0,0], 
   direction: 'N'
@@ -22,4 +36,4 @@ function goForward(rover) {
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
-goForward(myRover);
+//goForward(myRover);
