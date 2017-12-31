@@ -21,27 +21,27 @@
 	var VM = new Vue({
     el: "#app",
     data:{
-      position: [1,0],
+      position: [0,0],
       direction: "S",      
     },
     created: function () {
             window.addEventListener('keyup', this.getUserInput);
-            console.log("Current rover coordinates: " + this.position);
+            console.log("Just landed!! Current rover coordinates: " + this.position);
     },
     computed:{
     	roverSymbol: function(){
     		switch(this.direction){
     			case 'S':
-    				return "fa fa-arrow-circle-down fa-2x";
+    				return "fa fa-arrow-circle-down fa-3x";
     			break;
     			case 'N':
-    				return "fa fa-arrow-circle-up fa-2x";
+    				return "fa fa-arrow-circle-up fa-3x";
     			break;
     			case 'E':
-    				return "fa fa-arrow-circle-right fa-2x";
+    				return "fa fa-arrow-circle-right fa-3x";
     			break;
     			case 'W':
-    				return "fa fa-arrow-circle-left fa-2x"
+    				return "fa fa-arrow-circle-left fa-3x"
     			break;
     		}
     	}
