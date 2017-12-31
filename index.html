@@ -31,8 +31,14 @@
     	getUserInput: function(e){
     		if (e.which===83||e.which===78||e.which===69||e.which===87) {
     			var newDirection=String.fromCharCode(e.which);
-    			this.direction=newDirection;
-    			this.goForward(this.direction);
+    			if (newDirection===this.direction) {
+    				this.goForward(this.direction);
+    					
+    			} else {
+    				this.direction=newDirection;	
+    			}
+    			
+    			
     		}
     	},    	
     	goForward: function(dir){
