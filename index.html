@@ -2,14 +2,14 @@
 <head>
 	<title>Mars Rover Kata!</title>
 	<link rel="stylesheet" type="text/css" href="rover.css">
-	<script type="text/javascript" src="rover.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
 </head>
 <body>
 	<div id="app">
 		<div class="grid">
 			<div v-for="row in 10">
-				<div v-for="column in 10" class="cell"><span v-if="(row-1)===position[0] && (column-1)===position[1]">X</span></div>
+				<div v-for="column in 10" class="cell"><span v-if="(row-1)===position[0] && (column-1)===position[1]"><i v-bind:class="roverSymbol"></i></span></div>
 			</div>			
 		</div>	
 		<div class="control-panel">
@@ -22,11 +22,29 @@
     el: "#app",
     data:{
       position: [1,0],
-      direction: "S",
+      direction: "S",      
     },
     created: function () {
             window.addEventListener('keyup', this.getUserInput);
             console.log("Current rover coordinates: " + this.position);
+    },
+    computed:{
+    	roverSymbol: function(){
+    		switch(this.direction){
+    			case 'S':
+    				return "fa fa-arrow-circle-down fa-2x";
+    			break;
+    			case 'N':
+    				return "fa fa-arrow-circle-up fa-2x";
+    			break;
+    			case 'E':
+    				return "fa fa-arrow-circle-right fa-2x";
+    			break;
+    			case 'W':
+    				return "fa fa-arrow-circle-left fa-2x"
+    			break;
+    		}
+    	}
     },
     methods:{
     	getUserInput: function(e){
