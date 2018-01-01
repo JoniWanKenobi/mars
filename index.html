@@ -7,6 +7,8 @@
 </head>
 <body>
 	<div id="app">
+		<h1 style="text-align: center;">Mars Rover Mission Control</h1>
+		<h4 style="text-align: center;">Press "N", "E", "S", "W" for navigation</h4>
 		<div class="grid">
 			<div v-for="row in 10">
 				<div v-for="column in 10" class="cell"><span v-if="(row-1)===position[0] && (column-1)===position[1]"><i v-bind:class="roverSymbol"></i></span></div>
@@ -29,7 +31,7 @@
             console.log("Just landed!! Current rover coordinates: " + this.position);
     },
     computed:{
-    	roverSymbol: function(){
+    	roverSymbol: function(){ //this selects the right arrow (left, right, up, down) depending on current direction
     		switch(this.direction){
     			case 'S':
     				return "fa fa-arrow-circle-down fa-3x";
@@ -88,14 +90,10 @@
 			    		this.position.splice(1,1,9);
 			    	}			      
 			      break;
-
     		}
     		console.log("Current rover coordinates: " + this.position);
-
     	}
     }
   })
-
 </script>
-
 </html>
